@@ -1,11 +1,15 @@
+package Entity;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "products")
 public class Product implements Serializable{
     private static final long serialVersionUID = -1000119078147252957L;
 
+    private Date createDate;
     private String code;
     private String cardName;
     private byte[] cardImage;
@@ -67,5 +71,15 @@ public class Product implements Serializable{
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "Create_Date", nullable = false)
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 }
